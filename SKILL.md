@@ -1,5 +1,5 @@
 ---
-name: dev-driver
+name: skill-dev-driver
 description: 开发驾驶元技能 - 记住项目目标、历史和解决方案，并可调度其他领域技能。当用户需要理解/规划项目架构和开发路线、继续之前的工作（上下文感知）、查找历史解决方案或记录新问题、调用特定领域技能（小程序/论文/产品等）时使用此 Skill。
 triggerKeywords: ["继续", "下一步", "历史", "进度", "之前", "昨天", "上次", "架构", "设计", "规划", "路线", "怎么做", "如何开始", "错误", "bug", "问题", "失败", "报错", "异常", "解决"]
 author: YYCLink
@@ -7,11 +7,11 @@ version: 1.0.0
 dependencies: []
 ---
 
-# DevDriver Skill - 开发驾驶元技能
+# skill-dev-driver - 开发驾驶元技能
 
 ## 核心定位
 
-DevDriver 是一个**元技能（Meta-Skill）**，专注于：
+skill-dev-driver 是一个**元技能（Meta-Skill）**，专注于：
 - 🎯 **理解项目目标** - 知道用户要做什么
 - 📜 **记录项目历史** - 记住已完成和待办事项  
 - 💡 **积累解决方案** - 从问题中学习并复用
@@ -122,7 +122,7 @@ DevDriver 是一个**元技能（Meta-Skill）**，专注于：
 
 ### 调度机制
 
-DevDriver 可调用其他 YYCLink 技能：
+skill-dev-driver 可调用其他 YYCLink 技能：
 
 ```yaml
 技能路由表:
@@ -240,7 +240,7 @@ mkdir -p .yyclink/context
 ```json
 // skill-index.json (~500 token)
 {
-  "name": "DevDriver",
+  "name": "skill-dev-driver",
   "version": "1.0.0",
   "skills": [
     {
@@ -281,7 +281,7 @@ mkdir -p .yyclink/context
 ```
 用户：继续做昨天的功能
 
-DevDriver:
+skill-dev-driver:
 📖 读取项目上下文...
 当前任务：实现语音识别模块
 上次进度：完成了 HTTP API 通信部分
@@ -298,7 +298,7 @@ DevDriver:
 ```
 用户：用小程序技能做登录功能
 
-DevDriver:
+skill-dev-driver:
 🔗 检测到需要小程序开发技能...
 正在加载 skill-miniprogram-ecosystem...
 
@@ -313,7 +313,7 @@ DevDriver:
 ```
 用户：这个 bug 终于解决了！是 numpy 版本冲突
 
-DevDriver:
+skill-dev-driver:
 💡 检测到新问题解决方案！
 正在记录到 solution-library...
 
@@ -364,8 +364,8 @@ DevDriver:
 ```
 如果 `.yyclink/context/` 目录不存在：
 
-DevDriver:
-📁 检测到这是首次使用 DevDriver 技能。
+skill-dev-driver:
+📁 检测到这是首次使用 skill-dev-driver 技能。
 正在初始化项目上下文...
 
 已创建 .yyclink/context/ 目录。
@@ -378,7 +378,7 @@ DevDriver:
 ```
 如果调用的技能不存在：
 
-DevDriver:
+skill-dev-driver:
 ⚠️ 未找到技能：skill-xxx
 可能的原因：
 1. 技能未下载：运行 run.bat 下载技能
@@ -389,7 +389,7 @@ DevDriver:
 
 ## 成功指标
 
-用户的以下行为表示 DevDriver 工作正常：
+用户的以下行为表示 skill-dev-driver 工作正常：
 - 主动提及"继续"、"下一步"等上下文感知词
 - 使用技能调度功能
 - 记录新的解决方案

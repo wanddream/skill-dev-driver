@@ -1,4 +1,4 @@
-# DevDriver Skill - 开发驾驶元技能
+# skill-dev-driver - 开发驾驶元技能
 
 **版本**: 1.0.0  
 **作者**: YYCLink  
@@ -6,7 +6,7 @@
 
 ## 概述
 
-DevDriver 是一个**元技能（Meta-Skill）**，专注于：
+skill-dev-driver 是一个**元技能（Meta-Skill）**，专注于：
 - 🎯 **理解项目目标** - 知道用户要做什么
 - 📜 **记录项目历史** - 记住已完成和待办事项
 - 💡 **积累解决方案** - 从问题中学习并复用
@@ -23,7 +23,7 @@ DevDriver 是一个**元技能（Meta-Skill）**，专注于：
 
 ## 触发词
 
-当用户输入包含以下关键词时，DevDriver 会自动激活：
+当用户输入包含以下关键词时，skill-dev-driver 会自动激活：
 
 | 场景 | 触发词示例 | 调用的子技能 |
 |------|-----------|-------------|
@@ -60,7 +60,7 @@ git clone https://github.com/wanddream/skill-dev-driver.git
 
 **Cline/Cursor**：
 1. 项目里放 `skills/skill-dev-driver/`
-2. 使用时说："使用 DevDriver 技能"
+2. 使用时说："使用 skill-dev-driver 技能"
 
 ## 目录结构
 
@@ -89,7 +89,7 @@ skill-dev-driver/
 ```
 用户：继续做昨天的功能
 
-DevDriver:
+skill-dev-driver:
 📖 读取项目上下文...
 当前任务：实现语音识别模块
 上次进度：完成了 HTTP API 通信部分
@@ -106,7 +106,7 @@ DevDriver:
 ```
 用户：用小程序技能做登录功能
 
-DevDriver:
+skill-dev-driver:
 🔗 检测到需要小程序开发技能...
 正在加载 skill-miniprogram-ecosystem...
 
@@ -121,7 +121,7 @@ DevDriver:
 ```
 用户：这个 bug 终于解决了！是 numpy 版本冲突
 
-DevDriver:
+skill-dev-driver:
 💡 检测到新问题解决方案！
 正在记录到 solution-library...
 
@@ -209,7 +209,7 @@ mkdir -p .yyclink/context
 
 ## 与其他技能的配合
 
-DevDriver 可以与其他 YYCLink 技能配合使用：
+skill-dev-driver 可以与其他 YYCLink 技能配合使用：
 
 | 场景 | 配合的技能 | 调用方式 |
 |------|-----------|---------|
@@ -220,17 +220,17 @@ DevDriver 可以与其他 YYCLink 技能配合使用：
 
 ### 技能调度机制
 
-当用户说"用 XX 技能"或检测到相关领域关键词时，DevDriver 会：
+当用户说"用 XX 技能"或检测到相关领域关键词时，skill-dev-driver 会：
 1. 自动识别需要的技能
 2. 读取目标技能的 SKILL.md
 3. 按照目标技能的指令执行
-4. 完成任务后返回 DevDriver 继续上下文管理
+4. 完成任务后返回 skill-dev-driver 继续上下文管理
 
 ## 常见问题
 
-### Q: DevDriver 和其他技能有什么区别？
+### Q: skill-dev-driver 和其他技能有什么区别？
 
-**A**: DevDriver 是**元技能（Meta-Skill）**，它本身不专注于某个具体领域，而是：
+**A**: skill-dev-driver 是**元技能（Meta-Skill）**，它本身不专注于某个具体领域，而是：
 - 管理项目上下文（目标、历史、解决方案）
 - 调度其他领域技能（小程序、论文、产品等）
 - 让你在任何项目中都能"继续之前的工作"
@@ -238,12 +238,12 @@ DevDriver 可以与其他 YYCLink 技能配合使用：
 ### Q: 必须使用 .yyclink/context/目录吗？
 
 **A**: 这是推荐的目录结构，但你可以自定义。关键是：
-- DevDriver 需要知道项目目标和当前状态
+- skill-dev-driver 需要知道项目目标和当前状态
 - 目录位置可以在 SKILL.md 中配置
 
 ### Q: 如何在多个项目中使用？
 
-**A**: DevDriver 是**项目级**的技能：
+**A**: skill-dev-driver 是**项目级**的技能：
 - 每个项目有自己的 `.yyclink/context/` 目录
 - 在每个项目中单独初始化即可
 - 项目之间的上下文互不干扰
@@ -258,7 +258,7 @@ git commit -m "记录项目状态"
 
 ### Q: Token 用量会不会很高？
 
-**A**: DevDriver 采用轻量索引设计：
+**A**: skill-dev-driver 采用轻量索引设计：
 - 基础用量：~700 token（索引 + 当前状态）
 - 按需加载：~2000 token/子技能
 - 单次对话总计：~2700-4700 token

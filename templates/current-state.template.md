@@ -51,6 +51,6 @@
 ---
 
 **更新说明**：
-- 此文件由 DevDriver 自动更新
+- 此文件由 skill-dev-driver 自动更新
 - 每次完成任务后，请告诉 AI 更新此文件
 - 格式：「更新 current-state.md，记录今天完成了 XXX」
