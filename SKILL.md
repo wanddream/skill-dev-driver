@@ -122,26 +122,56 @@ skill-dev-driver 是一个**元技能（Meta-Skill）**，专注于：
 
 ### 调度机制
 
-skill-dev-driver 可调用其他 YYCLink 技能：
+skill-dev-driver 可调用其他 YYCLink 技能，技能路由配置在 `skill-index.json` 文件中：
 
 ```yaml
 技能路由表:
+  # Blender 工业建模技能
+  - 关键词：["blender", "建模", "3D", "容器", "盖子", "圆柱", "圆锥", "布尔", "倒角", "圆角", "阵列", "螺纹", "唇口", "加强筋", "材质", "导出", "STL", "OBJ"]
+    目标技能：skill-blender-industrial
+    路径：../skill-blender-industrial/SKILL.md
+    
+  # 小程序开发生态技能
   - 关键词：["小程序", "微信", "抖音", "支付宝"]
     目标技能：skill-miniprogram-ecosystem
     路径：../skill-miniprogram-ecosystem/SKILL.md
     
+  # 论文写作技能
   - 关键词：["论文", "学术", "写作", "文献"]
     目标技能：skill-thesis-writer
     路径：../skill-thesis-writer/SKILL.md
     
+  # 产品经理技能
   - 关键词：["产品", "评审", "需求", "功能"]
     目标技能：skill-product-manager
     路径：../skill-product-manager/SKILL.md
     
+  # Web 开发技能（示例）
   - 关键词：["web", "前端", "后端", "React", "Vue"]
     目标技能：skill-web-dev
     路径：../skill-web-dev/SKILL.md
 ```
+
+### 添加新的技能路由
+
+当需要添加新的领域技能时，在 `skill-index.json` 的 `externalSkills` 数组中添加配置：
+
+```json
+{
+  "externalSkills": [
+    {
+      "id": "your-skill-id",
+      "name": "你的技能名称",
+      "path": "../skill-your-skill/SKILL.md",
+      "description": "技能描述",
+      "triggerKeywords": ["关键词 1", "关键词 2"],
+      "tokenCost": "~2000"
+    }
+  ]
+}
+```
+
+> 💡 **提示**：技能路由配置在 `skill-index.json` 中，这样 AI 可以按需加载，节省 Token。
 
 ### 调用方式
 

@@ -217,6 +217,7 @@ skill-dev-driver 可以与其他 YYCLink 技能配合使用：
 | 论文写作 | skill-thesis-writer | 自动调度 |
 | 产品评审 | skill-product-manager | 自动调度 |
 | Web 开发 | skill-web-dev | 自动调度 |
+| Blender 建模 | skill-blender-industrial | 自动调度 |
 
 ### 技能调度机制
 
@@ -225,6 +226,91 @@ skill-dev-driver 可以与其他 YYCLink 技能配合使用：
 2. 读取目标技能的 SKILL.md
 3. 按照目标技能的指令执行
 4. 完成任务后返回 skill-dev-driver 继续上下文管理
+
+## 🔧 注册外部技能
+
+当有新的 YYCLink 领域技能时，需要注册到 `skill-index.json` 中，这样 skill-dev-driver 才能调度和使用它。
+
+### 注册步骤
+
+#### 步骤 1：打开 skill-index.json
+
+打开 `skill-dev-driver/skill-index.json` 文件。
+
+#### 步骤 2：在 externalSkills 数组中添加新条目
+
+```json
+{
+  "externalSkills": [
+    {
+      "id": "blender-industrial",
+      "name": "Blender 工业建模",
+      "path": "../skill-blender-industrial/SKILL.md",
+      "description": "Blender 工业产品建模 - 通过 MCP 与 Blender 通信创建 3D 模型。",
+      "triggerKeywords": ["blender", "建模", "3D", "容器", "盖子", "圆柱", "圆锥", "布尔", "倒角", "圆角", "阵列", "螺纹", "唇口", "加强筋", "材质", "导出", "STL", "OBJ"],
+      "tokenCost": "~2500"
+    },
+    // ... 其他外部技能
+  ]
+}
+```
+
+#### 步骤 3：配置字段说明
+
+| 字段 | 说明 | 示例 |
+|------|------|------|
+| `id` | 技能唯一标识 | `"blender-industrial"` |
+| `name` | 技能显示名称 | `"Blender 工业建模"` |
+| `path` | SKILL.md 文件路径（相对于 skill-dev-driver） | `"../skill-blender-industrial/SKILL.md"` |
+| `description` | 技能描述 | `"Blender 工业产品建模..."` |
+| `triggerKeywords` | 触发关键词数组 | `["blender", "建模", "3D"]` |
+| `tokenCost` | 预估 Token 用量 | `"~2500"` |
+
+#### 步骤 4：保存并提交
+
+```bash
+git add skill-index.json
+git commit -m "feat: 注册外部技能 skill-xxx"
+git push
+```
+
+### 外部技能配置示例
+
+```json
+{
+  "id": "your-skill-id",
+  "name": "你的技能名称",
+  "path": "../skill-your-skill/SKILL.md",
+  "description": "技能的简短描述",
+  "triggerKeywords": ["关键词 1", "关键词 2", "关键词 3"],
+  "tokenCost": "~2000"
+}
+```
+
+### 与 YYCLink-Skills 主仓库的关系
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│  YYCLink-Skills (主仓库/索引仓库)                              │
+│  ├── install.ps1          # 下载配置                         │
+│  ├── README.md            # 技能总览                         │
+│  └── skill-xxx/           # 技能文件夹                       │
+└─────────────────────────────────────────────────────────────┘
+                              │
+                              │ 技能注册
+                              ▼
+┌─────────────────────────────────────────────────────────────┐
+│  skill-dev-driver (元技能仓库)                                 │
+│  ├── SKILL.md             # 元技能核心文件                   │
+│  ├── README.md            # 元技能说明                       │
+│  └── skill-index.json     # 外部技能注册配置                 │
+└─────────────────────────────────────────────────────────────┘
+```
+
+**重要说明**：
+- `YYCLink-Skills` 是主仓库/索引仓库，负责技能的下载和管理
+- `skill-dev-driver` 是元技能仓库，负责技能调度和上下文管理
+- 添加新技能时，需要在两个仓库中都进行配置
 
 ## 常见问题
 
@@ -262,6 +348,10 @@ git commit -m "记录项目状态"
 - 基础用量：~700 token（索引 + 当前状态）
 - 按需加载：~2000 token/子技能
 - 单次对话总计：~2700-4700 token
+
+### Q: 如何添加新的外部技能？
+
+**A**: 在 `skill-index.json` 的 `externalSkills` 数组中添加新条目，配置技能的 ID、名称、路径和触发关键词。
 
 ## 更新日志
 

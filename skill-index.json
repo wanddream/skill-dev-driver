@@ -32,6 +32,14 @@
   ],
   "externalSkills": [
     {
+      "id": "blender-industrial",
+      "name": "Blender 工业建模",
+      "path": "../skill-blender-industrial/SKILL.md",
+      "description": "Blender 工业产品建模 - 通过 MCP 与 Blender 通信创建 3D 模型。",
+      "triggerKeywords": ["blender", "建模", "3D", "容器", "盖子", "圆柱", "圆锥", "布尔", "倒角", "圆角", "阵列", "螺纹", "唇口", "加强筋", "材质", "导出", "STL", "OBJ"],
+      "tokenCost": "~2500"
+    },
+    {
       "id": "miniprogram-ecosystem",
       "name": "小程序生态",
       "path": "../skill-miniprogram-ecosystem/SKILL.md",
